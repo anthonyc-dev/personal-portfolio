@@ -1,0 +1,187 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { ChevronDown, Sparkles, Rocket, Code2, Download } from "lucide-react";
+import { motion } from "framer-motion";
+import Lottie from "lottie-react";
+import spaceBoyAnimation from "@/../public/space boy developer.json";
+import Link from "next/link";
+
+interface HeroSectionProps {
+  name: string;
+  title: string;
+  subtitle: string;
+}
+
+export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-linear-to-r from-background via-background to-accent/10">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 0],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, -90, 0],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-20 right-20 w-96 h-96 bg-accent/30 rounded-full blur-3xl"
+        />
+      </div>
+      {/* Floating icon */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 0.1, scale: 1 }}
+        viewport={{ once: true }}
+        className="absolute top-50 right-60 pointer-events-none"
+      >
+        <Code2 className="w-32 h-32 text-primary" />
+      </motion.div>
+
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center relative z-10">
+        {/* Main Content */}
+        <div className="space-y-8 max-w-4xl mx-auto">
+          {/* Lottie Animation */}
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="flex justify-center mb-6"
+          >
+            <div className="relative">
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 bg-linear-to-r from-primary to-accent rounded-full blur-3xl opacity-50"
+                style={{ width: "5rem", height: "5rem" }}
+              />
+              <div className="relative w-20 h-20 md:w-25 md:h-25">
+                <Lottie
+                  animationData={spaceBoyAnimation}
+                  loop={true}
+                  className="w-20 h-20 md:w-25 md:h-25"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Name with stagger animation */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+          >
+            <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient font-pixel">
+              {name}
+            </span>
+          </motion.h1>
+
+          {/* Title with icon */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex items-center justify-center gap-3"
+          >
+            <Sparkles className="w-6 h-6 text-primary animate-pulse" />
+            <h2 className="text-2xl font-pixel md:text-3xl lg:text-4xl font-semibold text-primary">
+              {title}
+            </h2>
+            <Sparkles className="w-6 h-6 text-primary animate-pulse" />
+          </motion.div>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+          >
+            {subtitle}
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("projects")}
+                className="text-lg px-8 bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/50"
+              >
+                <Rocket className="w-5 h-5 mr-2" />
+                View Projects
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href="/Anthony Crausus CV.pdf">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => scrollToSection("contact")}
+                  className="text-lg px-8 border-2 hover:bg-accent/50"
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  Download Resume
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          opacity: { delay: 1.2 },
+          y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-sm text-muted-foreground">
+            Scroll to explore
+          </span>
+          <ChevronDown className="w-6 h-6 text-muted-foreground" />
+        </div>
+      </motion.div>
+    </section>
+  );
+}
