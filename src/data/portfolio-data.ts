@@ -131,7 +131,7 @@ export const portfolioData: PortfolioData = {
       ],
       githubUrl: "https://github.com/anthonyc-dev/Queue-Management-System",
       // demoUrl: "https://enrollment-system-demo.vercel.app",
-      imageUrl: "/projectImage/3.jpg",
+      imageUrl: "/projectImage/4.png",
     },
     {
       id: "barangay-record-management-system",

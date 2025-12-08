@@ -233,7 +233,7 @@ export function ProjectDetailsBottomSheet({
                   <h4 className="font-semibold text-foreground mb-3">
                     Project Links
                   </h4>
-                  <div className="space-y-2">
+                  <div className="space-y-2 md:w-auto">
                     {project.demoUrl && (
                       <Button
                         variant="outline"
