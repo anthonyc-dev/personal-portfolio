@@ -58,11 +58,20 @@ export function ContactSection({ description, links }: ContactSectionProps) {
     setSubmitStatus(null);
 
     try {
-      // Simulate form submission - replace with your actual API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sendEmail: formData.email,
+          message: `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+        }),
+      });
 
-      // You can integrate with services like FormSpree, EmailJS, or your own backend
-      console.log("Form submitted:", formData);
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
