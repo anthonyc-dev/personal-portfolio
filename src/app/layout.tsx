@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import { Navigation } from "@/components/navigation";
+import { getSeoMetadata } from "@/components/Seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,11 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Anthony Crausus - Full-Stack Developer",
-  description:
-    "Full-stack developer specializing in React, Next.js, Node.js, and modern web technologies. View my portfolio of real-world applications.",
-};
+export const metadata = getSeoMetadata({});
 
 export default function RootLayout({
   children,
