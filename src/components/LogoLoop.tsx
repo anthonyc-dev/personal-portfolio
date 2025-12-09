@@ -8,6 +8,22 @@ import React, {
   useState,
 } from "react";
 
+declare const window:
+  | {
+      ResizeObserver?: new (callback: () => void) => {
+        observe: (element: Element) => void;
+        disconnect: () => void;
+      };
+      addEventListener: (event: string, handler: () => void) => void;
+      removeEventListener: (event: string, handler: () => void) => void;
+      matchMedia?: (query: string) => { matches: boolean };
+    }
+  | undefined;
+declare const ResizeObserver: new (callback: () => void) => {
+  observe: (element: Element) => void;
+  disconnect: () => void;
+};
+
 export type LogoItem =
   | {
       node: React.ReactNode;
@@ -62,11 +78,14 @@ const useResizeObserver = (
   dependencies: React.DependencyList
 ) => {
   useEffect(() => {
-    if (!window.ResizeObserver) {
-      const handleResize = () => callback();
-      window.addEventListener("resize", handleResize);
-      callback();
-      return () => window.removeEventListener("resize", handleResize);
+    if (!window || !window.ResizeObserver) {
+      if (window) {
+        const handleResize = () => callback();
+        window.addEventListener("resize", handleResize);
+        callback();
+        return () => window.removeEventListener("resize", handleResize);
+      }
+      return;
     }
 
     const observers = elements.map((ref) => {
@@ -90,7 +109,7 @@ const useImageLoader = (
   dependencies: React.DependencyList
 ) => {
   useEffect(() => {
-    const images = seqRef.current?.querySelectorAll("img") ?? [];
+    const images = (seqRef.current as any)?.querySelectorAll("img") ?? [];
 
     if (images.length === 0) {
       onLoad();
@@ -105,18 +124,17 @@ const useImageLoader = (
       }
     };
 
-    images.forEach((img) => {
-      const htmlImg = img as HTMLImageElement;
-      if (htmlImg.complete) {
+    images.forEach((img: any) => {
+      if (img.complete) {
         handleImageLoad();
       } else {
-        htmlImg.addEventListener("load", handleImageLoad, { once: true });
-        htmlImg.addEventListener("error", handleImageLoad, { once: true });
+        img.addEventListener("load", handleImageLoad, { once: true });
+        img.addEventListener("error", handleImageLoad, { once: true });
       }
     });
 
     return () => {
-      images.forEach((img) => {
+      images.forEach((img: any) => {
         img.removeEventListener("load", handleImageLoad);
         img.removeEventListener("error", handleImageLoad);
       });
@@ -154,11 +172,11 @@ const useAnimationLoop = (
       const transformValue = isVertical
         ? `translate3d(0, ${-offsetRef.current}px, 0)`
         : `translate3d(${-offsetRef.current}px, 0, 0)`;
-      track.style.transform = transformValue;
+      (track as any).style.transform = transformValue;
     }
 
     if (prefersReduced) {
-      track.style.transform = isVertical
+      (track as any).style.transform = isVertical
         ? "translate3d(0, 0, 0)"
         : "translate3d(0, 0, 0)";
       return () => {
@@ -190,7 +208,7 @@ const useAnimationLoop = (
         const transformValue = isVertical
           ? `translate3d(0, ${-offsetRef.current}px, 0)`
           : `translate3d(${-offsetRef.current}px, 0, 0)`;
-        track.style.transform = transformValue;
+        (track as any).style.transform = transformValue;
       }
 
       rafRef.current = requestAnimationFrame(animate);

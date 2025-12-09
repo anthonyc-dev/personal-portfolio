@@ -5,6 +5,17 @@ import { Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
+declare const window:
+  | { scrollTo: (options: { top: number; behavior: string }) => void }
+  | undefined;
+declare const document:
+  | {
+      getElementById: (
+        id: string
+      ) => { scrollIntoView: (options: { behavior: string }) => void } | null;
+    }
+  | undefined;
+
 const socialLinks = [
   {
     name: "GitHub",
@@ -51,7 +62,9 @@ const item = {
 
 export function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (window) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const scrollToSection = (href: string) => {
@@ -59,9 +72,11 @@ export function Footer() {
       scrollToTop();
       return;
     }
-    const element = document.getElementById(href.replace("#", ""));
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (document) {
+      const element = document.getElementById(href.replace("#", ""));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 

@@ -27,12 +27,26 @@ interface EmailPayload {
 
 export async function POST(req: NextRequest) {
   try {
-    const { sendEmail, message }: EmailPayload = await req.json();
+    // req.json() is unknown — so we validate first
+    const body: unknown = await req.json();
 
-    // Create a simple HTML email template
+    if (
+      typeof body !== "object" ||
+      body === null ||
+      !("sendEmail" in body) ||
+      !("message" in body)
+    ) {
+      return NextResponse.json(
+        { error: "Invalid request payload" },
+        { status: 400 }
+      );
+    }
+
+    const { sendEmail, message } = body as EmailPayload;
+
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0;">
+         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0;">
           <h2 style="margin: 0; font-size: 24px;">📬 New Contact Form Message</h2>
         </div>
         <div style="background: white; padding: 20px; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 8px 8px;">
@@ -61,7 +75,7 @@ export async function POST(req: NextRequest) {
     `;
 
     const info = await transporter.sendMail({
-      from: `"Client" ${sendEmail}`,
+      from: `"Client" <${sendEmail}>`,
       to: USER_EMAIL,
       subject: "New message from portfolio contact form",
       html: htmlContent,

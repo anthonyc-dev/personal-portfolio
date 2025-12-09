@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, X, MessageCircle, Minimize2, Bot } from "lucide-react";
+import { Send, X, Minimize2, Bot } from "lucide-react";
 import { Message } from "@/types/chatbot";
 import { getResponse } from "@/data/chatbot-responses";
 import { Button } from "./ui/button";
@@ -20,10 +20,18 @@ export function Chatbot() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // Scroll to bottom safely
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesContainerRef.current) {
+      const container = messagesContainerRef.current as unknown as {
+        scrollTop: number;
+        scrollHeight: number;
+      };
+      container.scrollTop = container.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -44,7 +52,6 @@ export function Chatbot() {
     setInputValue("");
     setIsTyping(true);
 
-    // Simulate typing delay
     setTimeout(() => {
       const botResponse = getResponse(inputValue);
       const botMessage: Message = {
@@ -58,11 +65,16 @@ export function Chatbot() {
     }, 800);
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target as unknown as { value: string };
+    setInputValue(target.value);
   };
 
   return (
@@ -89,14 +101,10 @@ export function Chatbot() {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 100, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              height: isMinimized ? "60px" : "500px",
-            }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.8 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            style={{ height: isMinimized ? 60 : 500 }}
             className="fixed bottom-6 right-6 z-50 w-96 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200 dark:border-gray-800"
           >
             {/* Header */}
@@ -107,7 +115,7 @@ export function Chatbot() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-black/80">Cody</h3>
-                  <p className="text-xs  text-black/80">Virtual Assistant</p>
+                  <p className="text-xs text-black/80">Virtual Assistant</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -126,10 +134,13 @@ export function Chatbot() {
               </div>
             </div>
 
-            {/* Messages Container */}
+            {/* Messages */}
             {!isMinimized && (
               <>
-                <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-950">
+                <div
+                  ref={messagesContainerRef}
+                  className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-950"
+                >
                   {messages.map((message) => (
                     <motion.div
                       key={message.id}
@@ -141,13 +152,11 @@ export function Chatbot() {
                           : "justify-start items-end"
                       } gap-2`}
                     >
-                      {/* Bot Avatar */}
                       {message.sender === "bot" && (
                         <div className="w-8 h-8 bg-linear-to-r from-primary to-primary/80 rounded-full flex items-center justify-center font-bold text-white shrink-0">
                           <Bot className="text-black/80" />
                         </div>
                       )}
-
                       <div
                         className={`max-w-[80%] p-3 rounded-2xl ${
                           message.sender === "user"
@@ -168,11 +177,9 @@ export function Chatbot() {
                       animate={{ opacity: 1 }}
                       className="flex justify-start items-end gap-2"
                     >
-                      {/* Bot Avatar */}
                       <div className="w-8 h-8 bg-linear-to-r from-primary to-primary/80 rounded-full flex items-center justify-center font-bold text-white shrink-0">
                         <Bot className="text-black/80" />
                       </div>
-
                       <div className="bg-white dark:bg-gray-800 p-3 rounded-2xl border border-gray-200 dark:border-gray-700">
                         <div className="flex gap-1">
                           <motion.div
@@ -206,17 +213,15 @@ export function Chatbot() {
                       </div>
                     </motion.div>
                   )}
-
-                  <div ref={messagesEndRef} />
                 </div>
 
-                {/* Input Area */}
+                {/* Input */}
                 <div className="p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
                   <div className="flex gap-2">
                     <input
                       type="text"
                       value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
+                      onChange={handleInputChange}
                       onKeyPress={handleKeyPress}
                       placeholder="Ask me anything..."
                       className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-white dark:bg-gray-800 dark:text-white"
