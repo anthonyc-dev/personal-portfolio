@@ -7,6 +7,7 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { Footer } from "@/components/footer";
 import ScrollVelocitySection from "@/components/sections/ScrollVelocity-section";
 import LogoLoops from "@/components/sections/LogoLoops";
+import { Chatbot } from "@/components/chatbot";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         />
       </main>
       <Footer />
+      <Chatbot />
     </>
   );
 }
