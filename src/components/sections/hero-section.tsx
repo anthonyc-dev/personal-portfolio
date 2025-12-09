@@ -154,7 +154,6 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => scrollToSection("contact")}
                   className="text-lg px-8 border-2 hover:bg-accent/50"
                 >
                   <Download className="w-5 h-5 mr-2" />
