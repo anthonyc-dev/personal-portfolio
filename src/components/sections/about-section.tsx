@@ -32,8 +32,8 @@ export function AboutSection({ description, highlights }: AboutSectionProps) {
       title="About Me"
       className="bg-accent/5 relative overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      {/* Background decoration - Reduced blur on mobile */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-xl md:blur-3xl" />
 
       {/* Floating icon */}
       <motion.div
@@ -61,7 +61,7 @@ export function AboutSection({ description, highlights }: AboutSectionProps) {
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
             className="mb-6 relative"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-primary to-accent rounded-full blur-md opacity-50" />
+            <div className="absolute inset-0 bg-linear-to-r from-primary to-accent rounded-full blur-md md:blur-md opacity-50" />
             <div className="relative bg-primary/10  rounded-full backdrop-blur-sm border border-primary/20">
               <Image
                 src="/darkprof.png"
@@ -98,7 +98,7 @@ export function AboutSection({ description, highlights }: AboutSectionProps) {
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="relative group"
               >
-                <div className="absolute inset-0 bg-linear-to-r from-primary/10 to-accent/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-r from-primary/10 to-accent/10 rounded-xl blur md:blur opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative bg-card p-6 rounded-xl border border-border hover:border-primary/50 transition-all duration-300 h-full">
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-primary/10 rounded-lg shrink-0">

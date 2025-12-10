@@ -13,8 +13,8 @@ interface SkillsSectionProps {
 export function SkillsSection({ skills }: SkillsSectionProps) {
   return (
     <Section id="skills" title="Skills" subtitle="Technologies and tools I work with" className="relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Background decoration - Reduced blur on mobile */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-xl md:blur-3xl pointer-events-none" />
 
       {/* Floating icon */}
       <motion.div

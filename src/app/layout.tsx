@@ -32,11 +32,31 @@ export default function RootLayout({
                   var stored = localStorage.getItem('theme');
                   var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                   var theme = stored || (systemDark ? 'dark' : 'light');
-                  if (theme === 'dark') document.documentElement.classList.add('dark');
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                  
+                  // Listen for system preference changes
+                  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                    // Only update if user hasn't manually set a preference
+                    if (!localStorage.getItem('theme')) {
+                      if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                      } else {
+                        document.documentElement.classList.remove('dark');
+                      }
+                    }
+                  });
                 } catch (e) {}
               })();
             `,
           }}
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+          rel="stylesheet"
         />
       </head>
       <body

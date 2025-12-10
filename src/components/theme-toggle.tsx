@@ -7,12 +7,50 @@ export function ThemeToggle() {
   const [isDark, setIsDark] = useState<boolean | null>(null);
 
   useEffect(() => {
-    try {
-      const hasDark = document.documentElement.classList.contains("dark");
-      setIsDark(hasDark);
-    } catch (error) {
-      setIsDark(false);
+    const updateTheme = () => {
+      try {
+        const hasDark = document.documentElement.classList.contains("dark");
+        setIsDark(hasDark);
+      } catch (error) {
+        setIsDark(false);
+      }
+    };
+
+    // Initial check
+    updateTheme();
+
+    // Listen for system preference changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleSystemChange = () => {
+      // Only update if user hasn't manually set a preference
+      if (!localStorage.getItem("theme")) {
+        updateTheme();
+      }
+    };
+
+    // Listen for class changes (when theme is toggled)
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    // Modern browsers
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleSystemChange);
+    } else {
+      // Fallback for older browsers
+      mediaQuery.addListener(handleSystemChange);
     }
+
+    return () => {
+      observer.disconnect();
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleSystemChange);
+      } else {
+        mediaQuery.removeListener(handleSystemChange);
+      }
+    };
   }, []);
 
   const toggleTheme = () => {

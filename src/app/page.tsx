@@ -2,12 +2,34 @@ import { portfolioData } from "@/data/portfolio-data";
 import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { SkillsSection } from "@/components/sections/skills-section";
-import { ProjectsSection } from "@/components/sections/projects-section";
-import { ContactSection } from "@/components/sections/contact-section";
-import { Footer } from "@/components/footer";
-import ScrollVelocitySection from "@/components/sections/ScrollVelocity-section";
-import LogoLoops from "@/components/sections/LogoLoops";
-import { Chatbot } from "@/components/chatbot";
+import dynamic from "next/dynamic";
+import {
+  ScrollVelocitySection,
+  LogoLoops,
+  Chatbot,
+} from "@/components/client-sections";
+
+// Lazy load components below the fold for better initial load performance
+const ProjectsSection = dynamic(
+  () =>
+    import("@/components/sections/projects-section").then((mod) => ({
+      default: mod.ProjectsSection,
+    })),
+  { ssr: true }
+);
+
+const ContactSection = dynamic(
+  () =>
+    import("@/components/sections/contact-section").then((mod) => ({
+      default: mod.ContactSection,
+    })),
+  { ssr: true }
+);
+
+const Footer = dynamic(
+  () => import("@/components/footer").then((mod) => ({ default: mod.Footer })),
+  { ssr: true }
+);
 
 export default function Home() {
   return (

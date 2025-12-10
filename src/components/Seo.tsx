@@ -12,7 +12,7 @@ export function getSeoMetadata({
   title = "Portfolio | Anthony Crausus",
   description = "Portfolio of Anthony Crausus, a Full-Stack Developer specializing in modern web development with Next.js, React, and Node.js.",
   image = "/portfolio.png",
-  url = "https://yourdomain.com",
+  url = "https://personal-portfolio-wscy.vercel.app",
 }: SeoProps): Metadata {
   return {
     title: {
@@ -59,7 +59,14 @@ export function getSeoMetadata({
       creator: "@yourhandle",
       title,
       description,
-      images: [image],
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: `${title} Preview`,
+        },
+      ],
     },
 
     icons: {

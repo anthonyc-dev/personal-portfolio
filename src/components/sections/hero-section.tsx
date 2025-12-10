@@ -3,9 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Sparkles, Rocket, Code2, Download } from "lucide-react";
 import { motion } from "framer-motion";
-import Lottie from "lottie-react";
-import spaceBoyAnimation from "@/../public/space boy developer.json";
+import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+
+// Lazy load Lottie animation to reduce initial bundle size
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 interface HeroSectionProps {
   name: string;
@@ -14,6 +17,29 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [lottieData, setLottieData] = useState<any>(null);
+  const [shouldLoadLottie, setShouldLoadLottie] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Lazy load Lottie animation data only when needed
+    if (shouldLoadLottie && !lottieData) {
+      import("@/../public/space boy developer.json").then((data) => {
+        setLottieData(data.default);
+      });
+    }
+  }, [shouldLoadLottie, lottieData]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -23,75 +49,90 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-linear-to-r from-background via-background to-accent/10">
-      {/* Animated Background Elements */}
+      {/* Animated Background Elements - Reduced on mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-            opacity: [0.3, 0.5, 0.3],
-          }}
+          animate={
+            isMobile
+              ? {}
+              : {
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 90, 0],
+                  opacity: [0.3, 0.5, 0.3],
+                }
+          }
           transition={{
             duration: 20,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-3xl"
+          className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-xl md:blur-3xl"
         />
         <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-            opacity: [0.2, 0.4, 0.2],
-          }}
+          animate={
+            isMobile
+              ? {}
+              : {
+                  scale: [1, 1.3, 1],
+                  rotate: [0, -90, 0],
+                  opacity: [0.2, 0.4, 0.2],
+                }
+          }
           transition={{
             duration: 25,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute bottom-20 right-20 w-96 h-96 bg-accent/30 rounded-full blur-3xl"
+          className="absolute bottom-20 right-20 w-96 h-96 bg-accent/30 rounded-full blur-xl md:blur-3xl"
         />
       </div>
-      {/* Floating icon */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 0.1, scale: 1 }}
-        viewport={{ once: true }}
-        className="absolute top-50 right-60 pointer-events-none"
-      >
-        <Code2 className="w-32 h-32 text-primary" />
-      </motion.div>
+      {/* Floating icon - Hidden on mobile for performance */}
+      {!isMobile && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 0.1, scale: 1 }}
+          viewport={{ once: true }}
+          className="absolute top-50 right-60 pointer-events-none hidden md:block"
+        >
+          <Code2 className="w-32 h-32 text-primary" />
+        </motion.div>
+      )}
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center relative z-10">
         {/* Main Content */}
         <div className="space-y-8 max-w-4xl mx-auto">
-          {/* Lottie Animation */}
+          {/* Lottie Animation - Lazy loaded and optimized for mobile */}
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="flex justify-center mb-6"
+            onViewportEnter={() => setShouldLoadLottie(true)}
           >
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 bg-linear-to-r from-primary to-accent rounded-full blur-3xl opacity-50"
-                style={{ width: "5rem", height: "5rem" }}
-              />
-              <div className="relative w-20 h-20 md:w-25 md:h-25">
-                <Lottie
-                  animationData={spaceBoyAnimation}
-                  loop={true}
-                  className="w-20 h-20 md:w-25 md:h-25"
+              {!isMobile && (
+                <motion.div
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute inset-0 bg-linear-to-r from-primary to-accent rounded-full blur-3xl opacity-50"
+                  style={{ width: "5rem", height: "5rem" }}
                 />
+              )}
+              <div className="relative w-20 h-20 md:w-25 md:h-25">
+                {shouldLoadLottie && lottieData && (
+                  <Lottie
+                    animationData={lottieData}
+                    loop={true}
+                    className="w-20 h-20 md:w-25 md:h-25"
+                  />
+                )}
               </div>
             </div>
           </motion.div>
@@ -164,15 +205,17 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
           </motion.div>
         </div>
       </div>
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Reduced animation on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
+        animate={{ opacity: 1, y: isMobile ? 0 : [0, 10, 0] }}
         transition={{
           opacity: { delay: 1.2 },
-          y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+          y: isMobile
+            ? {}
+            : { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
         }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 will-change-transform"
       >
         <div className="flex flex-col items-center gap-2">
           <span className="text-sm text-muted-foreground">

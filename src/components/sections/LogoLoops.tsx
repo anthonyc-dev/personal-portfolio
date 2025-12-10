@@ -1,3 +1,5 @@
+"use client";
+
 import {
   SiNextdotjs,
   SiNodedotjs,
@@ -14,10 +16,19 @@ import {
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa6";
 import { TbBrandCSharp } from "react-icons/tb";
+import { useEffect, useState } from "react";
 
 import LogoLoop from "../LogoLoop";
 
 const LogoLoops = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   const techLogos = [
     { node: <SiReact />, title: "React", href: "https://react.dev" },
     { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
@@ -82,12 +93,12 @@ const LogoLoops = () => {
     <section className="py-28">
       <LogoLoop
         logos={techLogos}
-        speed={100}
+        speed={isMobile ? 60 : 100}
         direction="left"
-        logoHeight={60}
-        gap={60}
+        logoHeight={isMobile ? 40 : 60}
+        gap={isMobile ? 40 : 60}
         hoverSpeed={0}
-        scaleOnHover
+        scaleOnHover={!isMobile}
         fadeOut
         fadeOutColor="#030712"
         ariaLabel="Technology partners"
