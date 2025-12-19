@@ -58,6 +58,10 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

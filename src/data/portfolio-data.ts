@@ -79,11 +79,7 @@ export const portfolioData: PortfolioData = {
         "Travelers face challenges in planning trips efficiently—such as choosing destinations, optimizing itineraries, booking accommodations, and ensuring all travel details are organized. Manual planning can be time-consuming, prone to missing information, and often lacks personalization.",
       solution:
         "A full-stack AI-powered travel planning platform that helps users seamlessly design personalized itineraries, book hotels, flights, and activities, and manage all trip details in one place. The system uses AI to recommend destinations, create optimized travel schedules, and suggest experiences based on user preferences.",
-      technologies: [
-        "React Native (Expo)",
-        "Firebase (Authentication + Firestore)",
-        "Gemini AI",
-      ],
+      technologies: ["React Native", "Firebase", "Gemini"],
       results: [
         "Enabled travelers to create personalized travel plans in minutes rather than hours",
         "Improved itinerary accuracy by using AI recommendations and real-time data  ",
@@ -114,7 +110,7 @@ export const portfolioData: PortfolioData = {
       ],
       githubUrl: "https://github.com/anthonyc-dev/inventory-management-system",
       // demoUrl: "https://inventory-sales-demo.vercel.app",
-      imageUrl: "/projectImage/2.png",
+      imageUrl: "/projectImage/5.png",
     },
     {
       id: "queue-management-system",
@@ -123,7 +119,7 @@ export const portfolioData: PortfolioData = {
         "Many businesses and service centers face challenges in managing customer queues manually, leading to long wait times, missed appointments, and poor customer satisfaction.",
       solution:
         "A desktop application that allows businesses to efficiently manage customer queues, monitor service flow, and streamline appointment handling. Administrators have tools to track customer records, maintain real-time queue status, and oversee service allocation. The application provides secure access, an intuitive GUI, and robust data management through database integration.",
-      technologies: ["Python (TkInter)", "MySQL", "TkBootstrap", "WebSocket"],
+      technologies: ["Python", "MySQL", "TkBootstrap", "WebSocket"],
       results: [
         "Streamlined queue management, reducing manual paperwork, missed appointments, and service errors",
         "Improved administrative efficiency with organized customer/service records and real-time updates",
