@@ -1,6 +1,5 @@
 import { portfolioData } from "@/data/portfolio-data";
 import { HeroSection } from "@/components/sections/hero-section";
-import { AboutSection } from "@/components/sections/about-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 import dynamic from "next/dynamic";
 import {
@@ -31,6 +30,14 @@ const Footer = dynamic(
   { ssr: true }
 );
 
+const AboutSection = dynamic(
+  () =>
+    import("@/components/sections/about-section").then((mod) => ({
+      default: mod.AboutSection,
+    })),
+  { ssr: true }
+);
+
 export default function Home() {
   return (
     <>
@@ -41,6 +48,7 @@ export default function Home() {
           subtitle={portfolioData.hero.subtitle}
         />
         <ScrollVelocitySection />
+
         <AboutSection
           description={portfolioData.about.description}
           highlights={portfolioData.about.highlights}
