@@ -7,8 +7,18 @@ import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+const Snowfall = dynamic(() => import("react-snowfall"), { ssr: false });
+
 // Lazy load Lottie animation to reduce initial bundle size
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+
+const AboutSection = dynamic(
+  () =>
+    import("@/components/sections/about-section").then((mod) => ({
+      default: mod.AboutSection,
+    })),
+  { ssr: true }
+);
 
 interface HeroSectionProps {
   name: string;
@@ -50,6 +60,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-linear-to-r from-background via-background to-accent/10">
       {/* Animated Background Elements - Reduced on mobile */}
+      <Snowfall color="white" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={
