@@ -60,7 +60,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-linear-to-r from-background via-background to-accent/10">
       {/* Animated Background Elements - Reduced on mobile */}
-      <Snowfall color="white" />
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={

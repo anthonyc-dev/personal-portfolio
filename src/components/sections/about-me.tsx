@@ -1,78 +1,73 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { Section } from "../ui/section";
-import { CometCardDemo } from "../CometCardDemo";
-import { motion } from "framer-motion";
-import { CheckCircle, Target, Zap } from "lucide-react";
 
-interface AboutSectionProps {
-  description: string;
-  highlights: string[];
-}
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, x: -20 },
-  show: { opacity: 1, x: 0 },
-};
-
-const AboutMe = ({ description, highlights }: AboutSectionProps) => {
+const AboutMe = () => {
   return (
-    <Section title="About Me">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-7xl mx-auto relative z-10">
-        {/* image */}
-        <div className="flex justify-center items-center">
-          <CometCardDemo />
-        </div>
-        {/* details */}
-        <div className="mt-14">
-          <p className="text-lg leading-relaxed text-muted-foreground mb-8">
-            {description}
+    <section
+      id="about"
+      className="min-h-screen max-w-6xl flex items-center justify-center"
+    >
+      <div className="flex flex-col md:flex-row w-full gap-12 md:gap-24 items-center justify-center">
+        {/* Left Side: Text content */}
+        <div className="flex-1 flex flex-col items-center text-center">
+          <h2 className="text-[56px] font-bold mb-6 text-white">
+            Let’s get know about me closer
+          </h2>
+          <p className="text-[18px] md:text-lg text-[#A8A8A8] mb-8 max-w-lg">
+            Full stack developer specializing in web applications and digital
+            solutions. His portfolio highlights a diverse range of projects,
+            including dashboards, e-commerce sites, and mobile apps.
           </p>
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8"
+          <Link
+            href="#"
+            className="inline-flex items-center gap-2 px-6 py-3 mt-5 rounded-full text-white font-semibold text-base bg-[#FF9142] hover:bg-[#ff7b1f] transition-colors"
           >
-            {highlights.map((highlight, index) => {
-              const icons = [Zap, Target, CheckCircle];
-              const Icon = icons[index % icons.length];
+            Discover More About Me
+          </Link>
+        </div>
 
-              return (
-                <motion.div
-                  key={index}
-                  variants={item}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="relative group"
-                >
-                  <div className="absolute inset-0 bg-linear-to-r from-primary/10 to-accent/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative bg-card p-6 rounded-xl border border-border hover:border-primary/50 transition-all duration-300 h-full">
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-primary/10 rounded-lg shrink-0">
-                        <Icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <p className="text-sm">{highlight}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+        {/* Right Side: Profile Image */}
+        <div className="flex-1 flex justify-center relative">
+          {/* Orange outlined rectangle at top left */}
+          <div
+            className="absolute"
+            style={{
+              width: "178px",
+              height: "30px",
+              borderRadius: "100px",
+              border: "2px solid #FF9142",
+              top: "24px",
+              left: "50px",
+              background: "transparent",
+            }}
+          />
+          <Image
+            src="/darkprof.png"
+            alt="Aaronn Profile"
+            width={454}
+            height={506}
+            className="w-[454px] h-[506px] object-cover rounded-3xl"
+            priority
+          />
+          {/* Orange outlined rectangle at bottom right */}
+          <div
+            className="absolute"
+            style={{
+              width: "178px",
+              height: "45px",
+              borderRadius: "100px",
+              border: "2px solid #FF9142",
+              bottom: "24px",
+              right: "-30px",
+              background: "transparent",
+            }}
+          />
         </div>
       </div>
-    </Section>
+    </section>
   );
 };
 
