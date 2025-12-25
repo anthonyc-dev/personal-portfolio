@@ -24,9 +24,9 @@ const Contact = () => {
             Let's Work Together
           </h2>
           <p className="text-muted-foreground text-lg mb-10">
-            I'm currently available for freelance work and exciting projects. If
-            you have a project in mind or just want to say hello, feel free to
-            reach out!
+            I'm open for freelance opportunities and also for more permanent
+            roles, hire me! If you're interested in working together or want to
+            get in touch, just drop me a message.
           </p>
 
           {/* Email Button */}
