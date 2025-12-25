@@ -1,42 +1,14 @@
 import { portfolioData } from "@/data/portfolio-data";
 import { HeroSection } from "@/components/sections/hero-section";
-import { SkillsSection } from "@/components/sections/skills-section";
-import dynamic from "next/dynamic";
+import Skills from "@/components/sections/skills-section";
 import {
   ScrollVelocitySection,
   LogoLoops,
-  Chatbot,
+  About,
+  ContactSection,
+  Footer,
 } from "@/components/client-sections";
-
-// Lazy load components below the fold for better initial load performance
-const ProjectsSection = dynamic(
-  () =>
-    import("@/components/sections/projects-section").then((mod) => ({
-      default: mod.ProjectsSection,
-    })),
-  { ssr: true }
-);
-
-const ContactSection = dynamic(
-  () =>
-    import("@/components/sections/contact-section").then((mod) => ({
-      default: mod.ContactSection,
-    })),
-  { ssr: true }
-);
-
-const Footer = dynamic(
-  () => import("@/components/footer").then((mod) => ({ default: mod.Footer })),
-  { ssr: true }
-);
-
-const AboutSection = dynamic(
-  () =>
-    import("@/components/sections/about-section").then((mod) => ({
-      default: mod.AboutSection,
-    })),
-  { ssr: true }
-);
+import Projects from "@/components/project-card";
 
 export default function Home() {
   return (
@@ -49,20 +21,12 @@ export default function Home() {
         />
         <ScrollVelocitySection />
 
-        <AboutSection
-          description={portfolioData.about.description}
-          highlights={portfolioData.about.highlights}
-        />
-        <SkillsSection skills={portfolioData.skills} />
+        <About />
+        <Skills />
         <LogoLoops />
-        <ProjectsSection projects={portfolioData.projects} />
-        <ContactSection
-          description={portfolioData.contact.description}
-          links={portfolioData.contact.links}
-        />
+        <Projects />
+        <ContactSection />
       </main>
-      <Footer />
-      <Chatbot />
     </>
   );
 }

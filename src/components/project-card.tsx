@@ -1,187 +1,112 @@
 "use client";
 
-import { Project } from "@/types/portfolio";
-import { Card } from "@/components/ui/card";
+import { ExternalLink, Eye, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowUp, Badge } from "lucide-react";
-import { motion } from "framer-motion";
-import { FaBootstrap, FaGithub } from "react-icons/fa";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiMongodb,
-  SiFirebase,
-  SiPython,
-  SiMysql,
-  SiLaravel,
-} from "react-icons/si";
-import { RiGeminiFill } from "react-icons/ri";
-import { SiSocketdotio } from "react-icons/si";
-import type { IconType } from "react-icons";
 import Image from "next/image";
+import { portfolioData } from "@/data/portfolio-data";
+import Link from "next/link";
 
-interface ProjectCardProps {
-  readonly project: Project;
-  readonly index: number;
-  readonly onViewDetails: (project: Project) => void;
-}
+const Projects = () => {
+  const projects = portfolioData.projects;
 
-const techIconMap: Record<string, IconType> = {
-  "React.js": SiReact,
-  "React Js": SiReact,
-  "React.Js": SiReact,
-  "React Native": SiReact,
-  "Next.js": SiNextdotjs,
-  "Next Js": SiNextdotjs,
-  TypeScript: SiTypescript,
-  "Tailwind CSS": SiTailwindcss,
-  TailwindCSS: SiTailwindcss,
-  "Node.js": SiNodedotjs,
-  MongoDB: SiMongodb,
-  Firebase: SiFirebase,
-  Python: SiPython,
-  MySQL: SiMysql,
-  "Laravel 12": SiLaravel,
-  Laravel: SiLaravel,
-  Gemini: RiGeminiFill,
-  TkBootstrap: FaBootstrap,
-  WebSocket: SiSocketdotio,
-};
-
-export function ProjectCard({
-  project,
-  index,
-  onViewDetails,
-}: ProjectCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="h-full"
+    <section
+      id="projects"
+      className="py-24 bg-linear-to-r from-accent/5 to-primary/5 "
     >
-      <Card className="group h-full overflow-hidden border border-border/60 bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300">
-        {/* Project Image */}
-        {project.imageUrl && (
-          <div className="relative w-full aspect-4/3 overflow-hidden bg-muted">
-            <Image
-              src={project.imageUrl}
-              alt={project.title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="container mx-auto px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-primary font-medium mb-2 tracking-widest uppercase">
+              My Work
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Featured Projects
+            </h2>
+            <div className="w-20 h-1 bg-primary mx-auto" />
           </div>
-        )}
 
-        {/* Card Content */}
-        <div className="p-4 space-y-3">
-          {/* Title */}
-          <h3 className="text-lg font-semibold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
-            {project.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 min-h-10">
-            {project.solution}
-          </p>
-
-          {/* Tech Stack + Actions */}
-          <div className="mt-3 flex items-center justify-between gap-3">
-            {/* Tech Logos */}
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.slice(0, 4).map((tech) => {
-                const Icon = techIconMap[tech];
-                const fallbackLabel =
-                  tech
-                    .split(/[\s()]+/g)
-                    .filter(Boolean)
-                    .map((word) => word[0])
-                    .join("")
-                    .slice(0, 3) || "?";
-
-                return (
-                  <div className="relative group/tech" key={tech}>
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 transition-transform duration-300 hover:scale-110 cursor-pointer">
-                      {Icon ? (
-                        <Icon className="h-4 w-4 text-primary-foreground-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg " />
-                      ) : (
-                        <span className="text-[10px] font-semibold ">
-                          {fallbackLabel}
-                        </span>
-                      )}
-                    </div>
-                    {/* Tooltip */}
-                    <span className="pointer-events-none absolute left-1/2 bottom-full z-50 mb-2 px-2 py-1 rounded bg-background text-xs font-medium text-foreground opacity-0 group-hover/tech:opacity-100 transition-all duration-200 -translate-x-1/2 whitespace-nowrap shadow-lg border border-border">
-                      {tech}
-                    </span>
-                  </div>
-                );
-              })}
-              {project.technologies.length > 4 && (
-                <span className="flex items-center text-xs font-medium text-secondary-foreground py-0.5 h-8">
-                  +{project.technologies.length - 4} more
-                </span>
-              )}
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex items-center gap-2">
-              {/* View Details */}
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-xs font-medium px-2 h-7 group/btn"
-                onClick={() => onViewDetails(project)}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="group bg-card  rounded-md  border border-border overflow-hidden transition-all duration-500 hover:-translate-y-2"
               >
-                View Project
-                <ArrowUp className="w-3 h-3 ml-1 group-hover/btn:translate-x-1 transition-transform duration-200" />
-              </Button>
-
-              <div className="flex gap-1.5">
-                {project.demoUrl && (
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="h-7 w-7"
-                    asChild
-                    title="Live Demo"
-                  >
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                {/* Image Container */}
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={project.imageUrl || "/placeholder.png"}
+                    alt={project.title}
+                    className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110"
+                    width={600}
+                    height={208}
+                    style={{
+                      width: "100%",
+                      height: "13rem",
+                      objectFit: "cover",
+                    }}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm">
+                    <Link
+                      href={`/projects/${project.id}`}
+                      className="p-3 bg-background rounded-md text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                      aria-label="View live project"
                     >
-                      <ExternalLink className="w-3 h-3" />
+                      <Eye size={20} />
+                    </Link>
+                    <a
+                      href=""
+                      className="p-3 bg-background rounded-md text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                      aria-label="View source code"
+                    >
+                      <Github size={20} />
                     </a>
-                  </Button>
-                )}
+                  </div>
+                </div>
 
-                <Button
-                  size="icon"
-                  variant="outline"
-                  className="h-7 w-7"
-                  asChild
-                  title="Source Code"
-                >
-                  <a
-                    href={project.githubUrl || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub className="w-3 h-3" />
-                  </a>
-                </Button>
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {Array.isArray(project.technologies) ? (
+                      project.technologies.map((tech: string, i: number) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full">
+                        {project.technologies}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href={"https://github.com/anthonyc-dev?tab=repositories"}>
+              <Button variant="outline" size="lg">
+                View All Projects
+              </Button>
+            </Link>
           </div>
         </div>
-      </Card>
-    </motion.div>
+      </div>
+    </section>
   );
-}
+};
+
+export default Projects;

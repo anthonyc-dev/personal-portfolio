@@ -13,8 +13,15 @@ export const LogoLoops = dynamic(
   { ssr: false }
 );
 
-export const Chatbot = dynamic(
-  () =>
-    import("@/components/chatbot").then((mod) => ({ default: mod.Chatbot })),
-  { ssr: false }
+export const ContactSection = dynamic(
+  () => import("@/components/sections/contact-section"),
+  { ssr: true }
 );
+
+export const Footer = dynamic(() => import("@/components/footer"), {
+  ssr: true,
+});
+
+export const About = dynamic(() => import("@/components/sections/about-me"), {
+  ssr: true,
+});

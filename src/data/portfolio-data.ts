@@ -2,7 +2,7 @@ import { PortfolioData } from "@/types/portfolio";
 
 export const portfolioData: PortfolioData = {
   hero: {
-    name: "Anthony Crausus",
+    name: "Hi, I'm Anthony Crausus",
     title: "Full-Stack Developer",
     subtitle:
       "Building scalable, high-performance web and mobile applications using React, Next.js, Node.js, and Prisma.",
@@ -75,6 +75,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "AI-TRAVEL-PLANNER",
       title: "AI Travel Planner (Mobile App)",
+      description:
+        "Mobile app that enables users to easily plan personalized trips, book hotels and activities, and manage travel details with AI-powered recommendations.",
       problem:
         "Travelers face challenges in planning trips efficiently—such as choosing destinations, optimizing itineraries, booking accommodations, and ensuring all travel details are organized. Manual planning can be time-consuming, prone to missing information, and often lacks personalization.",
       solution:
@@ -92,6 +94,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "inventory-sales",
       title: "Inventory & Sales System",
+      description:
+        "A web app for small businesses to manage inventory, process sales, and generate financial reports in real time with streamlined workflows.",
       problem:
         "Small businesses often struggle to manage inventory and sales manually, leading to stock-outs, duplicate entries, and inaccurate financial reports.",
       solution:
@@ -115,6 +119,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "queue-management-system",
       title: "Queue Management System",
+      description:
+        "Desktop app for managing customer queues, streamlining appointments, and improving service flow for businesses and service centers.",
       problem:
         "Many businesses and service centers face challenges in managing customer queues manually, leading to long wait times, missed appointments, and poor customer satisfaction.",
       solution:
@@ -132,6 +138,8 @@ export const portfolioData: PortfolioData = {
     {
       id: "barangay-record-management-system",
       title: "Barangay Record Management System",
+      description:
+        "Web app that digitizes local government operations, enabling secure and efficient resident records, document requests, and clearances.",
       problem:
         "Barangays often rely on manual record-keeping for resident profiles, document requests, and clearance issuance. This leads to slow processing, misplaced records, and difficulty maintaining accurate, up-to-date information.",
       solution:

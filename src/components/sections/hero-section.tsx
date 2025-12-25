@@ -1,24 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Sparkles, Rocket, Code2, Download } from "lucide-react";
+import { Rocket, Code2, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-const Snowfall = dynamic(() => import("react-snowfall"), { ssr: false });
-
-// Lazy load Lottie animation to reduce initial bundle size
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-
-const AboutSection = dynamic(
-  () =>
-    import("@/components/sections/about-section").then((mod) => ({
-      default: mod.AboutSection,
-    })),
-  { ssr: true }
-);
 
 interface HeroSectionProps {
   name: string;
@@ -42,7 +32,6 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
   }, []);
 
   useEffect(() => {
-    // Lazy load Lottie animation data only when needed
     if (shouldLoadLottie && !lottieData) {
       import("@/../public/space boy developer.json").then((data) => {
         setLottieData(data.default);
@@ -58,52 +47,33 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-linear-to-r from-background via-background to-accent/10">
-      {/* Animated Background Elements - Reduced on mobile */}
+    <section
+      id="#contact"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Static background image for hero gradient */}
+      <Image
+        src="/gradient.png"
+        alt="bg"
+        fill
+        className="object-cover absolute inset-0 z-0 pointer-events-none select-none"
+        priority
+        sizes="100vw"
+      />
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={
-            isMobile
-              ? {}
-              : {
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 90, 0],
-                  opacity: [0.3, 0.5, 0.3],
-                }
-          }
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-xl md:blur-3xl"
-        />
-        <motion.div
-          animate={
-            isMobile
-              ? {}
-              : {
-                  scale: [1, 1.3, 1],
-                  rotate: [0, -90, 0],
-                  opacity: [0.2, 0.4, 0.2],
-                }
-          }
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-20 right-20 w-96 h-96 bg-accent/30 rounded-full blur-xl md:blur-3xl"
-        />
-      </div>
+      {/* Optionally: fallback for solid color layer */}
+      <div
+        className="absolute inset-0 bg-background/80 z-0"
+        aria-hidden="true"
+      />
+
       {/* Floating icon - Hidden on mobile for performance */}
       {!isMobile && (
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 0.1, scale: 1 }}
           viewport={{ once: true }}
-          className="absolute top-50 right-60 pointer-events-none hidden md:block"
+          className="absolute top-50 right-60 pointer-events-none hidden md:block z-10"
         >
           <Code2 className="w-32 h-32 text-primary" />
         </motion.div>
@@ -153,9 +123,9 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+            className="text-5xl md:text-6xl lg:text-6xl font-bold tracking-tight"
           >
-            <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient font-pixel">
+            <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient ">
               {name}
             </span>
           </motion.h1>
@@ -167,11 +137,11 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex items-center justify-center gap-3"
           >
-            <Sparkles className="w-6 h-6 text-primary animate-pulse" />
-            <h2 className="text-2xl font-pixel md:text-3xl lg:text-4xl font-semibold text-primary">
+            {/* <Sparkles className="w-6 h-6 text-primary animate-pulse" /> */}
+            <h2 className="text-2xl  md:text-3xl lg:text-3xl font-semibold text-primary">
               {title}
             </h2>
-            <Sparkles className="w-6 h-6 text-primary animate-pulse" />
+            {/* <Sparkles className="w-6 h-6 text-primary animate-pulse" /> */}
           </motion.div>
 
           {/* Subtitle */}
@@ -179,7 +149,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            className="text-md md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
             {subtitle}
           </motion.p>
@@ -195,7 +165,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
               <Button
                 size="lg"
                 onClick={() => scrollToSection("projects")}
-                className="text-lg px-8 bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/50"
+                className="text-lg  px-8 bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/50"
               >
                 <Rocket className="w-5 h-5 mr-2" />
                 View Projects
@@ -209,7 +179,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
                   className="text-lg px-8 border-2 hover:bg-accent/50"
                 >
                   <Download className="w-5 h-5 mr-2" />
-                  Download Resume
+                  My Resume
                 </Button>
               </Link>
             </motion.div>
@@ -217,7 +187,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
         </div>
       </div>
       {/* Scroll Indicator - Reduced animation on mobile */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: isMobile ? 0 : [0, 10, 0] }}
         transition={{
@@ -234,7 +204,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
           </span>
           <ChevronDown className="w-6 h-6 text-muted-foreground" />
         </div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }
