@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-import { Navigation } from "@/components/navigation";
+import { NavigationWrapper } from "@/components/navigation-wrapper";
 import { getSeoMetadata } from "@/components/Seo";
 import Footer from "@/components/footer";
 
@@ -61,7 +61,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased`}>
         <Providers>
-          <Navigation />
+          <NavigationWrapper />
           {children}
           <Footer />
         </Providers>

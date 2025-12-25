@@ -46,7 +46,7 @@ const About = () => {
               <div className="absolute inset-0 bg-primary/20 translate-x-4 translate-y-4 transition-transform group-hover:translate-x-6 group-hover:translate-y-6" />
               <Image
                 src="/profile.png"
-                alt="John Doe - Full Stack Developer"
+                alt="Anthony"
                 width={400}
                 height={400}
                 className="relative z-10 w-full max-w-md mx-auto aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500"

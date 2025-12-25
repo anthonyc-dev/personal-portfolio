@@ -118,19 +118,17 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
             </div>
           </motion.div>
 
-          {/* Name with stagger animation */}
+          {/* Name with stagger animation -- now small */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-6xl font-bold tracking-tight"
+            className="text-lg md:text-xl lg:text-2xl font-medium tracking-tight"
           >
-            <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient ">
-              {name}
-            </span>
+            <span className="text-muted-foreground">👋 {name}</span>
           </motion.h1>
 
-          {/* Title with icon */}
+          {/* Title with icon -- now big */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -138,7 +136,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
             className="flex items-center justify-center gap-3"
           >
             {/* <Sparkles className="w-6 h-6 text-primary animate-pulse" /> */}
-            <h2 className="text-2xl  md:text-3xl lg:text-3xl font-semibold text-primary">
+            <h2 className="text-5xl md:text-6xl lg:text-6xl font-bold bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
               {title}
             </h2>
             {/* <Sparkles className="w-6 h-6 text-primary animate-pulse" /> */}
