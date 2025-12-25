@@ -11,7 +11,7 @@ type SeoProps = {
 export function getSeoMetadata({
   title = "Portfolio | Anthony Crausus",
   description = "Portfolio of Anthony Crausus, a Full-Stack Developer specializing in modern web development with Next.js, React, and Node.js.",
-  image = "/portfolio.png",
+  image = "/images.png",
   url = "https://personal-portfolio-wscy.vercel.app",
 }: SeoProps): Metadata {
   return {
@@ -38,7 +38,7 @@ export function getSeoMetadata({
 
     openGraph: {
       type: "website",
-      locale: "en_US",
+      locale: "en_PH",
       url,
       siteName: "Anthony Crausus Portfolio",
       title,
