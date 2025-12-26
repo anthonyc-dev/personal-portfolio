@@ -163,7 +163,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
               <Button
                 size="lg"
                 onClick={() => scrollToSection("projects")}
-                className="text-lg  px-8 bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/50"
+                className="text-lg px-8 bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/50 rounded-full"
               >
                 <Rocket className="w-5 h-5 mr-2" />
                 View Projects
@@ -174,7 +174,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 border-2 hover:bg-accent/50"
+                  className="text-lg px-8 border-2 hover:bg-accent/50 rounded-full"
                 >
                   <Download className="w-5 h-5 mr-2" />
                   My Resume

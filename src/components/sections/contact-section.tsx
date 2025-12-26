@@ -16,11 +16,14 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section
+      id="contact"
+      className="py-24 bg-background min-h-screen flex items-center"
+    >
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-primary font-mono text-sm mb-2">Get In Touch</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl font-sans text-foreground mb-6">
             Let's Work Together
           </h2>
           <p className="text-muted-foreground text-lg mb-10">
@@ -32,7 +35,7 @@ const Contact = () => {
           {/* Email Button */}
           <Button
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 mb-12"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 mb-12 rounded-full"
             asChild
           >
             <a

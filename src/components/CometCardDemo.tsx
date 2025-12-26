@@ -5,7 +5,7 @@ export function CometCardDemo() {
     <CometCard>
       <button
         type="button"
-        className="my-10 flex w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4"
+        className="my-10 flex w-80 cursor-pointer flex-col items-stretch rounded-2xl border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4"
         aria-label="View invite F7RA"
         style={{
           transformStyle: "preserve-3d",
@@ -17,7 +17,7 @@ export function CometCardDemo() {
           <div className="relative mt-2 aspect-3/4 w-full">
             <img
               loading="lazy"
-              className="absolute inset-0 h-full w-full rounded-[16px] bg-[#000000] object-cover contrast-75"
+              className="absolute inset-0 h-full w-full rounded-2xl bg-[#000000] object-cover contrast-75"
               alt="Invite background"
               src="/example.jpg"
               style={{

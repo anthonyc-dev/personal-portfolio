@@ -32,14 +32,13 @@ export const portfolioData: PortfolioData = {
         { name: "Node.js", icon: "SiNodedotjs" },
         { name: "Express.js", icon: "SiExpress" },
         { name: "Laravel", icon: "SiLaravel" },
-        { name: "REST APIs", icon: "SiPostman" },
       ],
     },
     {
       category: "Databases",
       items: [
         { name: "MongoDB", icon: "SiMongodb" },
-        { name: "PostgreSQL", icon: "SiPostgresql" },
+        // { name: "PostgreSQL", icon: "SiPostgresql" },
         { name: "MySQL", icon: "SiMysql" },
         { name: "Firebase", icon: "SiFirebase" },
       ],
@@ -55,7 +54,6 @@ export const portfolioData: PortfolioData = {
       category: "Tools",
       items: [
         { name: "Git", icon: "SiGit" },
-        { name: "GitHub", icon: "SiGithub" },
         { name: "Docker", icon: "SiDocker" },
         { name: "CI/CD", icon: "SiGithubactions" },
         { name: "Prisma", icon: "SiPrisma" },
@@ -65,9 +63,8 @@ export const portfolioData: PortfolioData = {
       category: "Other",
       items: [
         { name: "API integrations", icon: "SiSwagger" },
-        { name: "AI integration", icon: "SiOpenai" },
+        { name: "AI integrations", icon: "SiOpenai" },
         { name: "Form validation (Zod)", icon: "SiZod" },
-        { name: "react-hook-form", icon: "SiReactquery" },
       ],
     },
   ],

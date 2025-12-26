@@ -90,7 +90,7 @@ const LogoLoops = () => {
   ];
 
   return (
-    <section className="py-28">
+    <section className="py-28 bg-linear-to-r from-accent/5 to-primary/5">
       <LogoLoop
         logos={techLogos}
         speed={isMobile ? 60 : 100}
@@ -99,8 +99,8 @@ const LogoLoops = () => {
         gap={isMobile ? 40 : 60}
         hoverSpeed={0}
         scaleOnHover={!isMobile}
-        fadeOut
-        fadeOutColor="#030712"
+        // fadeOut
+        // fadeOutColor="#030712"
         ariaLabel="Technology partners"
       />
     </section>

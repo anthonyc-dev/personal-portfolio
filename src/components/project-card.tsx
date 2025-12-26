@@ -20,7 +20,7 @@ const Projects = () => {
             <p className="text-primary font-medium mb-2 tracking-widest uppercase">
               My Work
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-sans text-foreground mb-6">
               Featured Projects
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto" />
@@ -33,11 +33,11 @@ const Projects = () => {
                 className="group bg-card  rounded-md  border border-border overflow-hidden transition-all duration-500 hover:-translate-y-2"
               >
                 {/* Image Container */}
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden p-3">
                   <Image
                     src={project.imageUrl || "/placeholder.png"}
                     alt={project.title}
-                    className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110  rounded-md"
                     width={600}
                     height={208}
                     style={{
@@ -98,7 +98,7 @@ const Projects = () => {
 
           <div className="text-center mt-12">
             <Link href={"https://github.com/anthonyc-dev?tab=repositories"}>
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="rounded-full">
                 View All Projects
               </Button>
             </Link>

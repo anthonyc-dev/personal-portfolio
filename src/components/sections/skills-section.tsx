@@ -18,7 +18,7 @@ const Skills = () => {
             <p className="text-primary font-medium mb-2 tracking-widest uppercase">
               My Skills
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-sans text-foreground mb-6">
               Technologies I Work With
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto" />
