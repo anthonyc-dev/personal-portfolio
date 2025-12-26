@@ -6,7 +6,6 @@ import {
   LogoLoops,
   About,
   ContactSection,
-  Footer,
 } from "@/components/client-sections";
 import Projects from "@/components/project-card";
 
@@ -25,6 +24,7 @@ export default function Home() {
         <Skills />
         <LogoLoops />
         <Projects />
+        {/* <TimelineSection /> */}
         <ContactSection />
       </main>
     </>
