@@ -8,8 +8,8 @@ export default function ProjectsLayout({
 }) {
   return (
     <>
-      <header className="w-full bg-background border-b border-border container mx-auto max-w-4xl px-4">
-        <div className="container mx-auto px-4 py-4 flex items-center">
+      <header className="w-full bg-background border-b border-border container mx-auto max-w-3xl px-4">
+        <div className="container mx-auto py-4 flex items-center">
           <Link
             href="/#projects"
             className="flex items-center text-primary hover:underline gap-2"
