@@ -44,6 +44,21 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
     if (href === "#") {
@@ -75,7 +90,8 @@ export function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className="fixed top-0 left-0 right-0 z-50 py-4"
+        className="fixed top-0 left-0 right-0 z-50 py-4 w-screen"
+        style={{ maxWidth: "100vw" }}
       >
         <div className=" mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-center">
@@ -200,8 +216,9 @@ export function Navigation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-linear-to-br from-background/90 via-background/85 to-background/90 backdrop-blur-md z-40 lg:hidden"
+              className="fixed inset-0 bg-linear-to-br from-background/90 via-background/85 to-background/90 backdrop-blur-md z-40 lg:hidden overflow-hidden"
               onClick={() => setIsMobileMenuOpen(false)}
+              style={{ maxWidth: "100vw", maxHeight: "100vh" }}
             />
 
             {/* Enhanced Menu Panel */}

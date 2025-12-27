@@ -90,7 +90,7 @@ const LogoLoops = () => {
   ];
 
   return (
-    <section className="py-28 bg-linear-to-r from-accent/5 to-primary/5">
+    <section className="py-28 ">
       <LogoLoop
         logos={techLogos}
         speed={isMobile ? 60 : 100}

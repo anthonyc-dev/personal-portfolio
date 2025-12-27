@@ -8,10 +8,7 @@ import { motion } from "framer-motion";
 const Skills = () => {
   const skills = portfolioData.skills;
   return (
-    <section
-      id="skills"
-      className="py-24 bg-linear-to-r from-accent/5 to-primary/5"
-    >
+    <section id="skills" className="py-24 ">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">

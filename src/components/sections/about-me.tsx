@@ -3,6 +3,7 @@
 import { Code2, Laptop, Rocket } from "lucide-react";
 import Image from "next/image";
 import { portfolioData } from "@/data/portfolio-data";
+import { motion } from "framer-motion";
 
 const About = () => {
   const highlights = [
@@ -39,6 +40,14 @@ const About = () => {
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto" />
           </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 0.1, scale: 1 }}
+            viewport={{ once: true }}
+            className="absolute top-50 right-60 pointer-events-none hidden md:block z-10"
+          >
+            <Code2 className="w-32 h-32 text-primary" />
+          </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Profile Image */}
