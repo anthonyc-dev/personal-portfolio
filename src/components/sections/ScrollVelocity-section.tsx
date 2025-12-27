@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
 export const ScrollVelocity = dynamic(() => import("../ScrollVelocity"), {
-  ssr: true,
+  ssr: false,
 });
 
 const ScrollVelocitySection = () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Eye, Github } from "lucide-react";
+import { Eye, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { portfolioData } from "@/data/portfolio-data";
@@ -67,7 +67,7 @@ const Projects = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">

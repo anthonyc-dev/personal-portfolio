@@ -1,6 +1,6 @@
 "use client";
 
-import { Code2, Laptop, Palette, Rocket } from "lucide-react";
+import { Code2, Laptop, Rocket } from "lucide-react";
 import Image from "next/image";
 import { portfolioData } from "@/data/portfolio-data";
 
@@ -43,13 +43,12 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Profile Image */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-primary/20 translate-x-4 translate-y-4 transition-transform group-hover:translate-x-6 group-hover:translate-y-6" />
               <Image
-                src="/profile.png"
+                src="/me1.png"
                 alt="Anthony"
                 width={400}
                 height={400}
-                className="relative z-10 w-full max-w-md mx-auto aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                className="relative z-10 w-full max-w-md mx-auto aspect-square object-cover grayscale  transition-all duration-500 rounded-lg"
                 priority
                 sizes="(max-width: 768px) 100vw, 33vw"
               />

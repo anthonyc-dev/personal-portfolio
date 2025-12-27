@@ -84,7 +84,7 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
             )}
           </div>
           <div className="flex-1 w-full">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">
+            <h1 className="text-3xl md:text-4xl font-semibold mb-3 text-foreground">
               {project.title}
             </h1>
             <p className="text-muted-foreground text-lg mb-4">

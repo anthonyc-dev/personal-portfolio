@@ -69,7 +69,7 @@ export function SkillCategory({ skill, index }: SkillCategoryProps) {
               <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-accent/20 rounded-lg blur opacity-0 group-hover/item:opacity-100 transition-opacity" />
 
               {/* Skill badge */}
-              <div className="relative flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg hover:border-primary/50 transition-all duration-300 cursor-pointer">
+              <div className="relative flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full hover:border-primary/50 transition-all duration-300 cursor-pointer">
                 {IconComponent && (
                   <IconComponent className="w-5 h-5 text-primary group-hover/item:scale-110 transition-transform" />
                 )}

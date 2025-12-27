@@ -15,13 +15,13 @@ export const LogoLoops = dynamic(
 
 export const ContactSection = dynamic(
   () => import("@/components/sections/contact-section"),
-  { ssr: true }
+  { ssr: false }
 );
 
 export const Footer = dynamic(() => import("@/components/footer"), {
-  ssr: true,
+  ssr: false,
 });
 
 export const About = dynamic(() => import("@/components/sections/about-me"), {
-  ssr: true,
+  ssr: false,
 });

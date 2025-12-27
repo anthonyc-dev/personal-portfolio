@@ -56,16 +56,16 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
         src="/gradient.png"
         alt="bg"
         fill
-        className="object-cover absolute inset-0 z-0 pointer-events-none select-none"
+        className="object-contain absolute inset-0 z-0 pointer-events-none select-none"
         priority
         sizes="100vw"
       />
 
       {/* Optionally: fallback for solid color layer */}
-      <div
-        className="absolute inset-0 bg-background/80 z-0"
+      {/* <div
+        className="absolute inset-0 bg-background/50 z-0"
         aria-hidden="true"
-      />
+      /> */}
 
       {/* Floating icon - Hidden on mobile for performance */}
       {!isMobile && (
@@ -123,7 +123,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl lg:text-2xl font-medium tracking-tight"
+            className="text-lg md:text-xl lg:text-2xl font-sans tracking-tight"
           >
             <span className="text-muted-foreground">👋 {name}</span>
           </motion.h1>
@@ -136,7 +136,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
             className="flex items-center justify-center gap-3"
           >
             {/* <Sparkles className="w-6 h-6 text-primary animate-pulse" /> */}
-            <h2 className="text-5xl md:text-6xl lg:text-6xl font-bold bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-sans bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
               {title}
             </h2>
             {/* <Sparkles className="w-6 h-6 text-primary animate-pulse" /> */}

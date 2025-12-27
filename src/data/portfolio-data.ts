@@ -32,13 +32,14 @@ export const portfolioData: PortfolioData = {
         { name: "Node.js", icon: "SiNodedotjs" },
         { name: "Express.js", icon: "SiExpress" },
         { name: "Laravel", icon: "SiLaravel" },
+        { name: "REST APIs", icon: "SiPostman" },
       ],
     },
     {
       category: "Databases",
       items: [
         { name: "MongoDB", icon: "SiMongodb" },
-        // { name: "PostgreSQL", icon: "SiPostgresql" },
+        { name: "PostgreSQL", icon: "SiPostgresql" },
         { name: "MySQL", icon: "SiMysql" },
         { name: "Firebase", icon: "SiFirebase" },
       ],

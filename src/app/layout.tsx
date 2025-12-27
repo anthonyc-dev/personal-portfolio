@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-import { NavigationWrapper } from "@/components/navigation-wrapper";
 import { getSeoMetadata } from "@/components/Seo";
 import Footer from "@/components/footer";
+import { NavigationWrapper } from "@/components/navigation-wrapper";
 
 const inter = Inter({
   variable: "--font-inter",
