@@ -7,7 +7,7 @@ import {
   About,
   ContactSection,
 } from "@/components/client-sections";
-import Projects from "@/components/project-card";
+import Projects from "@/components/sections/projects-section";
 
 export default function Home() {
   return (
@@ -23,7 +23,8 @@ export default function Home() {
         <About />
         <Skills />
         <LogoLoops />
-        <Projects />
+        {/* <Projects /> */}
+        <Projects projects={portfolioData.projects} />
         {/* <TimelineSection /> */}
         <ContactSection />
       </main>

@@ -56,15 +56,21 @@ const About = () => {
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              <Image
-                src="/me2.png"
-                alt="Anthony"
-                width={400}
-                height={400}
-                className="relative z-10 w-full max-w-md mx-auto aspect-square object-cover grayscale  transition-all duration-500 rounded-lg"
-                priority
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
+              <div className="overflow-hidden rounded-lg">
+                <Image
+                  src="/me2.png"
+                  alt="Anthony"
+                  width={400}
+                  height={400}
+                  className="relative z-10 w-full max-w-md mx-auto aspect-square object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 rounded-lg"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                {/* Optional: If you want an overlay on hover, uncomment below */}
+                {/* 
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity z-20 rounded-lg"></div>
+                */}
+              </div>
             </div>
 
             <div

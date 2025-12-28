@@ -57,7 +57,7 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
               alt={project.title}
               width={1200}
               height={675}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover rounded-md"
               priority
               unoptimized
             />

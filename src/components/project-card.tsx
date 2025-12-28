@@ -108,7 +108,8 @@ const Projects = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 space-y-4">
+            <p>Want to see more of my projects?</p>
             <Link href={"https://github.com/anthonyc-dev?tab=repositories"}>
               <Button variant="outline" size="lg" className="rounded-full">
                 View All Projects
