@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const Skills = () => {
   const skills = portfolioData.skills;
   return (
-    <section id="skills" className="py-24 ">
+    <section id="skills" className="py-24 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -20,7 +20,6 @@ const Skills = () => {
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto" />
           </div>
-
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-xl md:blur-3xl pointer-events-none" />
 
           {/* Floating icon */}
@@ -28,7 +27,7 @@ const Skills = () => {
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 0.1, scale: 1 }}
             viewport={{ once: true }}
-            className="absolute top-10 right-10 pointer-events-none"
+            className="absolute top-10 right-50 pointer-events-none"
           >
             <Code2 className="w-32 h-32 text-primary" />
           </motion.div>

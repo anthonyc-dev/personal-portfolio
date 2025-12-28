@@ -1,6 +1,7 @@
 "use client";
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const email = "anthonycrausus.dev@gmail.com";
@@ -18,10 +19,22 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 bg-background min-h-screen flex items-center"
+      className="py-24 bg-background min-h-screen flex items-center relative"
     >
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 0.1, scale: 1 }}
+        viewport={{ once: true }}
+        className="absolute top-10 right-50 pointer-events-none"
+      >
+        <Code2 className="w-32 h-32 text-primary" />
+      </motion.div>
       <div className="container mx-auto px-6">
-        <div className="max-w-2xl mx-auto text-center">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="max-w-2xl mx-auto text-center"
+        >
           <p className="text-primary font-mono text-sm mb-2">Get In Touch</p>
           <h2 className="text-3xl md:text-4xl font-sans text-foreground mb-6">
             Let's Work Together

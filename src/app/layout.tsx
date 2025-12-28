@@ -6,8 +6,9 @@ import Footer from "@/components/footer";
 import { NavigationWrapper } from "@/components/navigation-wrapper";
 
 const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata = getSeoMetadata({});
@@ -50,14 +51,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
       </head>
       <body className={`${inter.variable} antialiased overflow-x-hidden`}>
         <Providers>
@@ -65,6 +59,9 @@ export default function RootLayout({
           {children}
           <Footer />
         </Providers>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>AOS.init();</script>
       </body>
     </html>
   );

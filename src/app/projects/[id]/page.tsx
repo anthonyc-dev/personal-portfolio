@@ -30,9 +30,17 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
 
   return (
     <div className="min-h-screen py-20 bg-background">
+      {/* <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 0.1, scale: 1 }}
+        viewport={{ once: true }}
+        className="absolute top-10 right-50 pointer-events-none"
+      >
+        <Code2 className="w-32 h-32 text-primary" />
+      </motion.div> */}
       <div className="container mx-auto max-w-3xl px-4">
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-10">
           <h1 className="text-4xl md:text-5xl font-light mb-4 text-foreground tracking-tight">
             {project.title}
           </h1>
@@ -43,7 +51,7 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
 
         {/* Project Image */}
         {imageSrc && (
-          <div className="mb-16">
+          <div className="mb-10">
             <Image
               src={imageSrc}
               alt={project.title}
@@ -57,7 +65,7 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
         )}
 
         {/* Technologies */}
-        <div className="mb-16">
+        <div className="mb-10">
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <Badge
@@ -73,7 +81,7 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
 
         {/* GitHub Link */}
         {project.githubUrl && (
-          <div className="mb-20">
+          <div className="mb-10">
             <Link
               href={project.githubUrl}
               target="_blank"
@@ -88,10 +96,10 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
         )}
 
         {/* Divider */}
-        <div className="border-t border-border/30 my-20" />
+        <div className="border-t border-border/30 my-10" />
 
         {/* Problem */}
-        <div className="mb-16">
+        <div className="mb-10">
           <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-6">
             Problem
           </h2>
@@ -101,10 +109,10 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-border/30 my-20" />
+        <div className="border-t border-border/30 my-10" />
 
         {/* Solution */}
-        <div className="mb-16">
+        <div className="mb-10">
           <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-6">
             Solution
           </h2>
@@ -114,10 +122,10 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-border/30 my-20" />
+        <div className="border-t border-border/30 my-10" />
 
         {/* Results */}
-        <div className="mb-16">
+        <div className="mb-10">
           <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-6">
             Results
           </h2>

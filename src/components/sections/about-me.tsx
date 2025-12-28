@@ -27,8 +27,16 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-24 bg-linear-to-r from-accent/5 to-primary/5"
+      className="py-24 bg-linear-to-r from-accent/5 to-primary/5 relative"
     >
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 0.1, scale: 1 }}
+        viewport={{ once: true }}
+        className="absolute top-20 left-60 pointer-events-none"
+      >
+        <Code2 className="w-32 h-32 text-primary" />
+      </motion.div>
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -40,20 +48,16 @@ const About = () => {
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto" />
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 0.1, scale: 1 }}
-            viewport={{ once: true }}
-            className="absolute top-50 right-60 pointer-events-none hidden md:block z-10"
-          >
-            <Code2 className="w-32 h-32 text-primary" />
-          </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Profile Image */}
-            <div className="relative group">
+            <div
+              className="relative group"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
               <Image
-                src="/me1.png"
+                src="/me2.png"
                 alt="Anthony"
                 width={400}
                 height={400}
@@ -63,7 +67,11 @@ const About = () => {
               />
             </div>
 
-            <div className="space-y-6">
+            <div
+              className="space-y-6"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
               <p className="text-muted-foreground text-lg leading-relaxed">
                 {portfolioData.about.description}
               </p>

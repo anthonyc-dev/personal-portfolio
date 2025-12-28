@@ -36,14 +36,14 @@ export function AboutSection({ description, highlights }: AboutSectionProps) {
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-xl md:blur-3xl" />
 
       {/* Floating icon */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 0.1, scale: 1 }}
         viewport={{ once: true }}
         className="absolute top-10 left-10 pointer-events-none"
       >
         <Code2 className="w-32 h-32 text-primary" />
-      </motion.div>
+      </motion.div> */}
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Icon and description */}

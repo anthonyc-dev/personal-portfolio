@@ -1,10 +1,11 @@
 "use client";
 
-import { Eye, Github } from "lucide-react";
+import { Code2, Eye, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { portfolioData } from "@/data/portfolio-data";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const projects = portfolioData.projects;
@@ -12,7 +13,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-24 bg-linear-to-r from-accent/5 to-primary/5 "
+      className="py-24 bg-linear-to-r from-accent/5 to-primary/5 relative"
     >
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
@@ -25,12 +26,23 @@ const Projects = () => {
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto" />
           </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 0.1, scale: 1 }}
+            viewport={{ once: true }}
+            className="absolute top-20 left-50 pointer-events-none"
+          >
+            <Code2 className="w-32 h-32 text-primary" />
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1000"
                 key={index}
-                className="group bg-card  rounded-md  border border-border overflow-hidden transition-all duration-500 hover:-translate-y-2"
+                className="group bg-card  rounded-md  border border-border overflow-hidden transition-all duration-1000 hover:-translate-y-2"
               >
                 {/* Image Container */}
                 <div className="relative overflow-hidden p-3">

@@ -68,16 +68,15 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
       /> */}
 
       {/* Floating icon - Hidden on mobile for performance */}
-      {!isMobile && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 0.1, scale: 1 }}
-          viewport={{ once: true }}
-          className="absolute top-50 right-60 pointer-events-none hidden md:block z-10"
-        >
-          <Code2 className="w-32 h-32 text-primary" />
-        </motion.div>
-      )}
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 0.1, scale: 1 }}
+        viewport={{ once: true }}
+        className="absolute top-50 right-60 pointer-events-none hidden md:block z-10"
+      >
+        <Code2 className="w-32 h-32 text-primary" />
+      </motion.div>
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center relative z-10">
         {/* Main Content */}
