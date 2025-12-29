@@ -37,7 +37,7 @@ const Projects = ({ projects }: ProjectProps) => {
                 <div
                   data-aos="fade-up"
                   data-aos-anchor-placement="top-bottom"
-                  key={project.title}
+                  key={index}
                   className="flex flex-col md:flex-row items-center gap-10 md:gap-14"
                 >
                   {/* Image always on the left */}
@@ -125,7 +125,8 @@ const Projects = ({ projects }: ProjectProps) => {
         <p>Want to see more of my projects?</p>
         <Link href={"https://github.com/anthonyc-dev?tab=repositories"}>
           <Button variant="outline" size="lg" className="rounded-full">
-            View All Projects
+            View more on GitHub
+            <ArrowUpRight />
           </Button>
         </Link>
       </div>

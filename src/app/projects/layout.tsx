@@ -16,7 +16,7 @@ export default function ProjectsLayout({
             aria-label="Back to Home"
           >
             <ArrowLeft size={20} />
-            <span className="font-medium">Back Home</span>
+            <span className="font-medium">Back</span>
           </Link>
         </div>
       </header>
