@@ -1,11 +1,7 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-
-export const ScrollVelocity = dynamic(() => import("../ScrollVelocity"), {
-  ssr: false,
-});
+import { ScrollVelocity } from "../client-sections";
 
 const ScrollVelocitySection = () => {
   const [isMobile, setIsMobile] = useState(false);

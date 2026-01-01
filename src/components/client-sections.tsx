@@ -25,3 +25,10 @@ export const Footer = dynamic(() => import("@/components/footer"), {
 export const About = dynamic(() => import("@/components/sections/about-me"), {
   ssr: false,
 });
+
+export const ScrollVelocity = dynamic(
+  () => import("@/components/ScrollVelocity"),
+  {
+    ssr: false,
+  }
+);
