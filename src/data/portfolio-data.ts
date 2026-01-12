@@ -177,7 +177,7 @@ export const portfolioData: PortfolioData = {
       },
       {
         label: "Download Resume",
-        href: "/Anthony Crausus CV.pdf",
+        href: "/Anthony_Crausus_FullStack_Resume.pdf",
         icon: "download",
       },
     ],
