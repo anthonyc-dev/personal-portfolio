@@ -59,19 +59,38 @@ export function AboutSection({ description, highlights }: AboutSectionProps) {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="mb-6 relative"
+            className="mb-6 relative group"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-primary to-accent rounded-full blur-md md:blur-md opacity-50" />
-            <div className="relative bg-primary/10  rounded-full backdrop-blur-sm border border-primary/20">
+            {/* Blurred bottom shadow on hover */}
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-22px] w-28 h-7 bg-primary/40 blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-full z-10 pointer-events-none" />
+
+            {/* Profile image with hover effects */}
+            <motion.div
+              whileHover={{
+                borderRadius: "1.5rem",
+                rotate: 8,
+                transition: { duration: 0.4, type: "spring", stiffness: 150 },
+              }}
+              className="relative bg-primary/10 rounded-full backdrop-blur-sm border border-primary/20 group-hover:rounded-2xl transition-all duration-500 overflow-hidden"
+            >
               <Image
                 src="/darkprof.png"
                 alt="Profile"
                 width={48}
                 height={48}
-                className="w-20 h-20 rounded-full object-cover"
+                className="w-20 h-20 rounded-full group-hover:rounded-2xl object-cover transition-all duration-500"
                 priority
               />
-            </div>
+              {/* Name and roles appears only on hover */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/30 backdrop-blur-sm rounded-2xl z-20">
+                <span className="text-lg font-semibold text-white">
+                  Anthony Castillo
+                </span>
+                <span className="text-xs text-muted-foreground mt-1 px-2 py-1 bg-primary/60 rounded-md">
+                  Full Stack Developer
+                </span>
+              </div>
+            </motion.div>
           </motion.div>
 
           <p className="text-lg leading-relaxed text-center text-muted-foreground max-w-3xl">

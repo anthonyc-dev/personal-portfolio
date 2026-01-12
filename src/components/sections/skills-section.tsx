@@ -32,7 +32,7 @@ const Skills = () => {
             <Code2 className="w-32 h-32 text-primary" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto relative z-10 justify-center items-center">
             {skills.map((skill, index) => (
               <SkillCategory key={skill.category} skill={skill} index={index} />
             ))}

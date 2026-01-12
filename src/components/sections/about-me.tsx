@@ -52,24 +52,58 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Profile Image */}
             <div
-              className="relative group"
+              className="relative group max-w-md mx-auto"
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              <div className="overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden rounded-lg">
+                {/* Image */}
                 <Image
                   src="/me2.png"
                   alt="Anthony"
                   width={400}
                   height={400}
-                  className="relative z-10 w-full max-w-md mx-auto aspect-square object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 rounded-lg"
                   priority
                   sizes="(max-width: 768px) 100vw, 33vw"
+                  className="
+        w-full aspect-square object-cover
+        grayscale
+        transition-transform duration-500 ease-out
+        group-hover:scale-105 group-hover:grayscale-0
+        will-change-transform
+      "
                 />
-                {/* Optional: If you want an overlay on hover, uncomment below */}
-                {/* 
-                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity z-20 rounded-lg"></div>
-                */}
+
+                {/* Bottom overlay (blur NOT animated) */}
+                <div
+                  className="
+        absolute inset-x-0 bottom-0 h-32
+        bg-linear-to-t from-black/60 via-black/30 to-transparent
+        backdrop-blur-md
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-300 ease-out
+        will-change-opacity
+        pointer-events-none
+      "
+                />
+
+                {/* Text */}
+                <div
+                  className="
+        absolute bottom-4 left-4 z-10
+        opacity-0 translate-y-2
+        group-hover:opacity-100 group-hover:translate-y-0
+        transition-all duration-300 ease-out
+        will-change-transform will-change-opacity
+      "
+                >
+                  <h3 className="text-lg font-sarif text-white">
+                    Anthony Crausus
+                  </h3>
+                  <p className="text-sm text-white/80 tracking-wide">
+                    Full Stack Developer
+                  </p>
+                </div>
               </div>
             </div>
 
