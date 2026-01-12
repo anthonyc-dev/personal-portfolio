@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Project } from "@/types/portfolio";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -126,7 +126,7 @@ const Projects = ({ projects }: ProjectProps) => {
         <Link href={"https://github.com/anthonyc-dev?tab=repositories"}>
           <Button variant="outline" size="lg" className="rounded-full">
             View more on GitHub
-            <ArrowUpRight />
+            <GithubIcon />
           </Button>
         </Link>
       </div>

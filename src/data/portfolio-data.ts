@@ -9,7 +9,7 @@ export const portfolioData: PortfolioData = {
   },
   about: {
     description:
-      "I am a Full-stack developer with 4+ years experience building real-world web and mobile applications. I specialize in React, Next.js, Node.js, Prisma, MongoDB, and Firebase. I design scalable, maintainable applications with clean code and focus on solving practical business problems.",
+      "I am a Full-stack developer with 3+ years experience building real-world web and mobile applications. I specialize in React, Next.js, Node.js, Prisma, MongoDB, and Firebase. I design scalable, maintainable applications with clean code and focus on solving practical business problems.",
     highlights: [
       "Full-stack web and mobile applications",
       "API integrations, authentication, database management",
