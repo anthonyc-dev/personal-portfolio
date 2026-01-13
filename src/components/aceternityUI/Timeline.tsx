@@ -28,7 +28,7 @@ export function TimelineDemo() {
                 src: "https://assets.aceternity.com/templates/startup-4.webp",
                 alt: "startup template",
               },
-            ].map((img, idx) => (
+            ].map((img) => (
               <img
                 key={img.src}
                 src={img.src}
@@ -72,7 +72,7 @@ export function TimelineDemo() {
                 src: "https://assets.aceternity.com/cards.png",
                 alt: "cards template",
               },
-            ].map((img, idx) => (
+            ].map((img) => (
               <img
                 key={img.src}
                 src={img.src}
@@ -100,7 +100,7 @@ export function TimelineDemo() {
               "✅ Random file upload lol",
               "✅ Himesh Reshammiya Music CD",
               "✅ Salman Bhai Fan Club registrations open",
-            ].map((txt, idx) => (
+            ].map((txt) => (
               <div
                 key={txt}
                 className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300"
@@ -127,7 +127,7 @@ export function TimelineDemo() {
                 src: "https://assets.aceternity.com/cards.png",
                 alt: "cards template",
               },
-            ].map((img, idx) => (
+            ].map((img) => (
               <img
                 key={img.src}
                 src={img.src}

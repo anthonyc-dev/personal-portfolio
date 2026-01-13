@@ -169,7 +169,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href="https://drive.google.com/file/d/1SEEe5BH3wljegvs2zUuvEzr8aFaqhzPU/view?usp=drive_link">
+              <Link href="/Anthony_Crausus_FullStack_Resume.pdf">
                 <Button
                   size="lg"
                   variant="outline"

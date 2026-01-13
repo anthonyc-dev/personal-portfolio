@@ -1,7 +1,7 @@
 "use client";
 
 import { Section } from "@/components/ui/section";
-import { CheckCircle, Zap, Target, Code2 } from "lucide-react";
+import { CheckCircle, Zap, Target } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 

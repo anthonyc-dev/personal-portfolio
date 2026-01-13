@@ -52,7 +52,7 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Profile Image */}
             <div
-              className="relative group max-w-md mx-auto"
+              className="relative group w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
               data-aos="fade-right"
               data-aos-duration="1000"
             >
@@ -64,43 +64,44 @@ const About = () => {
                   width={400}
                   height={400}
                   priority
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 33vw"
                   className="
-        w-full aspect-square object-cover
-        grayscale
-        transition-transform duration-500 ease-out
-        group-hover:scale-105 group-hover:grayscale-0
-        will-change-transform
-      "
+                    w-full aspect-square object-cover
+                    grayscale
+                    transition-transform duration-500 ease-out
+                    group-hover:scale-105 group-hover:grayscale-0
+                    will-change-transform
+                    sm:min-h-65 md:min-h-80 lg:min-h-95
+                  "
                 />
 
                 {/* Bottom overlay (blur NOT animated) */}
                 <div
                   className="
-        absolute inset-x-0 bottom-0 h-32
-        bg-linear-to-t from-black/60 via-black/30 to-transparent
-        backdrop-blur-md
-        opacity-0 group-hover:opacity-100
-        transition-opacity duration-300 ease-out
-        will-change-opacity
-        pointer-events-none
-      "
+                    absolute inset-x-0 bottom-0 h-20 sm:h-24 md:h-28 lg:h-32
+                    bg-linear-to-t from-black/60 via-black/30 to-transparent
+                    backdrop-blur-md
+                    opacity-0 group-hover:opacity-100
+                    transition-opacity duration-300 ease-out
+                    will-change-opacity
+                    pointer-events-none
+                  "
                 />
 
                 {/* Text */}
                 <div
                   className="
-        absolute bottom-4 left-4 z-10
-        opacity-0 translate-y-2
-        group-hover:opacity-100 group-hover:translate-y-0
-        transition-all duration-300 ease-out
-        will-change-transform will-change-opacity
-      "
+                    absolute bottom-2 left-2 sm:bottom-3 sm:left-3 md:bottom-4 md:left-4 z-10
+                    opacity-0 translate-y-2
+                    group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-300 ease-out
+                    will-change-transform will-change-opacity
+                  "
                 >
-                  <h3 className="text-lg font-sarif text-white">
+                  <h3 className="text-base sm:text-lg md:text-xl font-sarif text-white">
                     Anthony Crausus
                   </h3>
-                  <p className="text-sm text-white/80 tracking-wide">
+                  <p className="text-xs sm:text-sm md:text-base text-white/80 tracking-wide">
                     Full Stack Developer
                   </p>
                 </div>

@@ -37,12 +37,12 @@ const Contact = () => {
         >
           <p className="text-primary font-mono text-sm mb-2">Get In Touch</p>
           <h2 className="text-3xl md:text-4xl font-sans text-foreground mb-6">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-muted-foreground text-lg mb-10">
-            I'm open for freelance opportunities and also for more permanent
-            roles, hire me! If you're interested in working together or want to
-            get in touch, just drop me a message.
+            I&apos;m open for freelance opportunities and also for more
+            permanent roles, hire me! If you&apos;re interested in working
+            together or want to get in touch, just drop me a message.
           </p>
 
           {/* Email Button */}
