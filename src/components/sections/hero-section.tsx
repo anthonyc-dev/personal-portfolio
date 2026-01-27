@@ -3,12 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { Rocket, Code2, Download } from "lucide-react";
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Lottie } from "../client-sections";
 
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 interface HeroSectionProps {
   name: string;

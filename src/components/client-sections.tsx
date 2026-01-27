@@ -32,3 +32,5 @@ export const ScrollVelocity = dynamic(
     ssr: false,
   }
 );
+
+export const Lottie = dynamic(() => import("lottie-react"), { ssr: false });

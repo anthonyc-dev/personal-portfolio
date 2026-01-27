@@ -52,7 +52,7 @@ export const portfolioData: PortfolioData = {
       ],
     },
     {
-      category: "Tools",
+      category: "DevOps & Tools",
       items: [
         { name: "Git", icon: "SiGit" },
         { name: "Docker", icon: "SiDocker" },
