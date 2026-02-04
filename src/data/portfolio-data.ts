@@ -58,6 +58,7 @@ export const portfolioData: PortfolioData = {
         { name: "Docker", icon: "SiDocker" },
         { name: "CI/CD", icon: "SiGithubactions" },
         { name: "Prisma", icon: "SiPrisma" },
+        { name: "Postman", icon: "SiPostman" },
       ],
     },
     {

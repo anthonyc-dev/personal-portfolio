@@ -1,9 +1,12 @@
+
+
 import React from "react";
 import { portfolioData } from "@/data/portfolio-data";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Code2 } from "lucide-react";
+
 
 interface ProjectDetailProps {
   params: Promise<{ id: string }>;
@@ -25,19 +28,16 @@ const ProjectDetail = async ({ params }: ProjectDetailProps) => {
     project.imageUrl && project.imageUrl.startsWith("/")
       ? project.imageUrl
       : project.imageUrl
-      ? `${project.imageUrl}`
-      : null;
+        ? `${project.imageUrl}`
+        : null;
 
   return (
-    <div className="min-h-screen py-20 bg-background">
-      {/* <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 0.1, scale: 1 }}
-        viewport={{ once: true }}
+    <div className="min-h-screen py-20 bg-background relative">
+      <div
         className="absolute top-10 right-50 pointer-events-none"
       >
-        <Code2 className="w-32 h-32 text-primary" />
-      </motion.div> */}
+        <Code2 className="w-32 h-32 text-primary opacity-10" />
+      </div>
       <div className="container mx-auto max-w-3xl px-4">
         {/* Header */}
         <div className="mb-10">

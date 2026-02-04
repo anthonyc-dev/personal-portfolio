@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { Project } from "@/types/portfolio";
-import { ArrowUpRight, Github, GithubIcon } from "lucide-react";
+import { ArrowUpRight, Code2, Github, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { motion } from "framer-motion";
 
 interface ProjectProps {
   projects: Project[];
@@ -14,8 +15,16 @@ const Projects = ({ projects }: ProjectProps) => {
   return (
     <section
       id="projects"
-      className="py-24 bg-linear-to-r from-accent/5 to-primary/5"
+      className="py-24 bg-linear-to-r from-accent/5 to-primary/5 relative"
     >
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 0.1, scale: 1 }}
+        viewport={{ once: true }}
+        className="absolute top-20 left-60 pointer-events-none"
+      >
+        <Code2 className="w-32 h-32 text-primary" />
+      </motion.div>
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
@@ -32,7 +41,6 @@ const Projects = ({ projects }: ProjectProps) => {
           {/* Projects */}
           <div className="space-y-24">
             {projects.map((project, index) => {
-              // Images are always left, text is always right
               return (
                 <div
                   data-aos="fade-up"
@@ -81,7 +89,7 @@ const Projects = ({ projects }: ProjectProps) => {
 
                     {/* Tech Stack */}
                     <div className="flex flex-wrap gap-3 mb-6 justify-start">
-                      {project.technologies.map((tech) => (
+                      {project.technologies.slice(0, 5).map((tech) => (
                         <span
                           key={tech}
                           className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"

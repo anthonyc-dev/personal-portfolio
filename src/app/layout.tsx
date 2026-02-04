@@ -4,6 +4,7 @@ import Providers from "./providers";
 import { getSeoMetadata } from "@/components/Seo";
 import Footer from "@/components/footer";
 import { NavigationWrapper } from "@/components/navigation-wrapper";
+import AOSProvider from "@/components/AOSProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-        <head>
+      <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -51,17 +52,14 @@ export default function RootLayout({
             `,
           }}
         />
-        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
       </head>
       <body className={`${inter.variable} antialiased overflow-x-hidden`}>
         <Providers>
+          <AOSProvider />
           <NavigationWrapper />
           {children}
           <Footer />
         </Providers>
-
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>AOS.init();</script>
       </body>
     </html>
   );

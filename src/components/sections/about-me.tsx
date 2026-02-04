@@ -117,23 +117,32 @@ const About = () => {
                 {portfolioData.about.description}
               </p>
 
-              <div className="grid gap-4 pt-4">
+              <div className="flex flex-col gap-6 pt-6">
                 {highlights.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-4 p-4 bg-background border rounded-md border-border hover:border-primary transition-colors duration-300"
+                    className={`
+                      relative flex items-center gap-3 p-3 bg-background
+                      border border-border rounded-xl shadow-lg
+                      transition-all duration-400 group
+                      hover:scale-[1.03] hover:border-primary/70 hover:shadow-primary/10
+                    `}
                   >
-                    <div className="p-2 bg-primary/10">
-                      <item.icon className="text-primary" size={20} />
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/15 group-hover:bg-primary/25 transition-colors duration-300 ring-2 ring-primary/20">
+                      <item.icon className="text-primary group-hover:scale-110 transition-transform" size={20} />
                     </div>
                     <div>
-                      {/* <h3 className="font-semibold text-foreground">
-                        {item.title}
-                      </h3> */}
-                      <p className="text-sm text-muted-foreground">
+                      {item.title && (
+                        <h3 className="font-bold  text-base mb-1 tracking-wide bg-linear-to-r from-primary via-accent to-foreground bg-clip-text text-transparent">
+                          {item.title}
+                        </h3>
+                      )}
+                      <p className="text-sm  text-muted-foreground/90 leading-snug">
                         {item.description}
                       </p>
                     </div>
+                    {/* Subtle highlight ring animation */}
+                    <span className="absolute inset-0 rounded-xl pointer-events-none group-hover:shadow-[0_0_0_3px] group-hover:shadow-primary/20 transition"></span>
                   </div>
                 ))}
               </div>
