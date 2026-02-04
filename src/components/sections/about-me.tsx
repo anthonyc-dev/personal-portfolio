@@ -122,7 +122,7 @@ const About = () => {
                   <div
                     key={index}
                     className={`
-                      relative flex items-center gap-3 p-3 bg-background
+                      relative flex items-center gap-5 p-3 bg-background
                       border border-border rounded-xl shadow-lg
                       transition-all duration-400 group
                       hover:scale-[1.03] hover:border-primary/70 hover:shadow-primary/10
@@ -132,11 +132,11 @@ const About = () => {
                       <item.icon className="text-primary group-hover:scale-110 transition-transform" size={20} />
                     </div>
                     <div>
-                      {item.title && (
+                      {/* {item.title && (
                         <h3 className="font-bold  text-base mb-1 tracking-wide bg-linear-to-r from-primary via-accent to-foreground bg-clip-text text-transparent">
                           {item.title}
                         </h3>
-                      )}
+                      )} */}
                       <p className="text-sm  text-muted-foreground/90 leading-snug">
                         {item.description}
                       </p>
