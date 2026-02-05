@@ -1,10 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Rocket, Code2, Download, Handshake } from "lucide-react";
+import { Rocket, Code2, Handshake } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Lottie } from "../client-sections";
 

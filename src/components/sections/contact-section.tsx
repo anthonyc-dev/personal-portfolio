@@ -48,10 +48,10 @@ const Contact = () => {
           </p>
 
           {/* Email Button */}
-          <div className="flex justify-center items-center gap-3">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 mb-12 rounded-full"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 sm:mb-12 rounded-full"
               asChild
             >
               <a
