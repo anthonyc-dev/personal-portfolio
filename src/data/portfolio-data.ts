@@ -88,7 +88,7 @@ export const portfolioData: PortfolioData = {
       ],
       githubUrl: "https://github.com/anthonyc-dev/AI-TRAVEL-PLANNER",
       // demoUrl: "https://doctor-info-fetcher.vercel.app",
-      imageUrl: "/projectImage/1.png",
+      imageUrl: "/mockup/m4.png",
     },
     {
       id: "inventory-sales",
@@ -113,7 +113,7 @@ export const portfolioData: PortfolioData = {
       ],
       githubUrl: "https://github.com/anthonyc-dev/inventory-management-system",
       // demoUrl: "https://inventory-sales-demo.vercel.app",
-      imageUrl: "/projectImage/5.png",
+      imageUrl: "/mockup/m3.png",
     },
     {
       id: "queue-management-system",
@@ -132,7 +132,7 @@ export const portfolioData: PortfolioData = {
       ],
       githubUrl: "https://github.com/anthonyc-dev/Queue-Management-System",
       // demoUrl: "https://enrollment-system-demo.vercel.app",
-      imageUrl: "/projectImage/4.png",
+      imageUrl: "/mockup/m2.png",
     },
     {
       id: "barangay-record-management-system",
@@ -159,7 +159,7 @@ export const portfolioData: PortfolioData = {
       githubUrl:
         "https://github.com/anthonyc-dev/Barangay-record-management-system-V1",
       // demoUrl: "",
-      imageUrl: "/projectImage/BRMS/4.png",
+      imageUrl: "/mockup/m1.png",
     },
   ],
   contact: {

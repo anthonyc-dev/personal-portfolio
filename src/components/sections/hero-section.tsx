@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Rocket, Code2, Download } from "lucide-react";
+import { Rocket, Code2, Download, Handshake } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -161,23 +161,22 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
               <Button
                 size="lg"
                 onClick={() => scrollToSection("projects")}
-                className="text-lg px-8 bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/50 rounded-full"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 mb-12 rounded-full"
               >
                 <Rocket className="w-5 h-5 mr-2" />
                 View Projects
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/Anthony_Crausus_FullStack_Resume.pdf">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 border-2 hover:bg-accent/50 rounded-full"
-                >
-                  <Download className="w-5 h-5 mr-2" />
-                  My Resume
-                </Button>
-              </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => scrollToSection("contact")}
+                className="text-lg px-10 border-2 hover:bg-accent/50 rounded-full"
+              >
+                <Handshake className="w-5 h-5 mr-2" />
+                Hire me
+              </Button>
             </motion.div>
           </motion.div>
         </div>

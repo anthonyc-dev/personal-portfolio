@@ -78,7 +78,7 @@ const Projects = ({ projects }: ProjectProps) => {
                   {/* Content always on the right */}
                   <div className="w-full md:w-1/2 flex flex-col md:items-start">
                     {/* Title */}
-                    <h3 className="text-2xl md:text-3xl font-medium text-foreground mb-4">
+                    <h3 className="text-2xl  font-medium text-foreground mb-4">
                       {project.title}
                     </h3>
 

@@ -1,8 +1,9 @@
 "use client";
 
-import { Mail, Github, Linkedin, Twitter, Code2 } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, Code2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Contact = () => {
   const email = "anthonycrausus.dev@gmail.com";
@@ -47,19 +48,37 @@ const Contact = () => {
           </p>
 
           {/* Email Button */}
-          <Button
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 mb-12 rounded-full"
-            asChild
-          >
-            <a
-              href={`mailto:${email}`}
-              className="inline-flex items-center gap-2"
+          <div className="flex justify-center items-center gap-3">
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 mb-12 rounded-full"
+              asChild
             >
-              <Mail size={20} />
-              Send Me an Email
-            </a>
-          </Button>
+              <a
+                href={`mailto:${email}`}
+                className="inline-flex items-center gap-2"
+              >
+                <Mail size={20} />
+                Send Me an Email
+              </a>
+            </Button>
+
+            <Button
+              size="lg"
+              variant={"outline"}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 mb-12 rounded-full"
+              asChild
+            >
+              <Link
+                href="/Anthony_Crausus_FullStack_Resume.pdf"
+                className="inline-flex items-center gap-2 text-white"
+              >
+                <Download size={20} />
+                My Resume
+              </Link>
+            </Button>
+          </div>
+
 
           {/* Social Links */}
           <div className="flex justify-center gap-6">

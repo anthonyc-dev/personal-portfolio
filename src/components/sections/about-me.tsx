@@ -137,7 +137,7 @@ const About = () => {
                           {item.title}
                         </h3>
                       )} */}
-                      <p className="text-sm  text-muted-foreground/90 leading-snug">
+                      <p className="text-sm text-muted-foreground/90 leading-snug">
                         {item.description}
                       </p>
                     </div>
