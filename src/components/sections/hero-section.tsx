@@ -160,7 +160,7 @@ export function HeroSection({ name, title, subtitle }: HeroSectionProps) {
               <Button
                 size="lg"
                 onClick={() => scrollToSection("projects")}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 mb-12 rounded-full"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 sm:mb-12 rounded-full"
               >
                 <Rocket className="w-5 h-5 mr-2" />
                 View Projects

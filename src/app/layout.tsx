@@ -5,6 +5,7 @@ import { getSeoMetadata } from "@/components/Seo";
 import Footer from "@/components/footer";
 import { NavigationWrapper } from "@/components/navigation-wrapper";
 import AOSProvider from "@/components/AOSProvider";
+import StartupGate from "@/components/StartupGate";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,10 +56,12 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased overflow-x-hidden`}>
         <Providers>
-          <AOSProvider />
-          <NavigationWrapper />
-          {children}
-          <Footer />
+          <StartupGate>
+            <AOSProvider />
+            <NavigationWrapper />
+            {children}
+            <Footer />
+          </StartupGate>
         </Providers>
       </body>
     </html>
