@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import CTA from "@/components/sections/CTA";
 
 export default function ProjectsLayout({
   children,
@@ -21,6 +22,7 @@ export default function ProjectsLayout({
         </div>
       </header>
       {children}
+      <CTA />
     </>
   );
 }
